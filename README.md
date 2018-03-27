@@ -8,6 +8,7 @@
 - [Installation](#installation)
 - [Project structure](#project-structure)
 - [About Tensorflow](#about-tensorflow)
+- [About TensorBoard](#about-tensorboard)
 - [Models](#models)
 - [Slides from AUHack](#slides-from-auhack)
 
