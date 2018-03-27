@@ -7,6 +7,7 @@
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Project structure](#project-structure)
+- [About Tensorflow](#about-tensorflow)
 - [Models](#models)
 - [Slides from AUHack](#slides-from-auhack)
 
@@ -18,6 +19,29 @@ Here goes the installation guide
 
 ## Project structure
 Here goes the project structure
+
+## About Tensorflow
+[Tensorflow](https://www.tensorflow.org/) is a python library, which
+is good at exactly what the name indicates; orchestrating flows of
+tensors (multi-dimensional vector). In order to orchestrate tensors,
+one needs to understand three concepts, namely, *tensors*, *graphs*,
+and *sessions*. We will cover them conceptually here and in greater
+detail in the section about the first (and simpler model) included in
+this project.
+
+### Graphs
+In Tensorflow, you build a graph, which contains all the information
+about how different tensors "interact" with each other. 
+
+### Tensors
+
+
+### Sessions
+
+## About TensorBoard
+[TensorBoard](https://www.tensorflow.org/programmers_guide/summaries_and_tensorboard) is
+a 
+
 
 ## Models
 Here goes description of models
