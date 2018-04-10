@@ -1,3 +1,6 @@
+/for-readme
+nns/__pycache__
+nns/MNIST_data
 
 # Created by https://www.gitignore.io/api/emacs,python,pycharm,linux,windows,macOS,vim
 
