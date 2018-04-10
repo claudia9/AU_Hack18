@@ -1,0 +1,3 @@
++ Store parameters for FC model
++ Conv net for Cifar-10
++ Slides
