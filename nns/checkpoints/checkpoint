@@ -1,0 +1,6 @@
+model_checkpoint_path: "convolution.ckpt-10000"
+all_model_checkpoint_paths: "convolution.ckpt-6000"
+all_model_checkpoint_paths: "convolution.ckpt-7000"
+all_model_checkpoint_paths: "convolution.ckpt-8000"
+all_model_checkpoint_paths: "convolution.ckpt-9000"
+all_model_checkpoint_paths: "convolution.ckpt-10000"
