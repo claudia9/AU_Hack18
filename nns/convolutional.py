@@ -88,8 +88,7 @@ def main(model_name, restore, log_dir, **kwargs):
             iterations = 10001
             validate_at = 50 
             batch_size = 100
-            checkpoints = 10
-            checkpoint_at = iterations // checkpoints
+            checkpoint_at = 1000
             
             for i in range(iterations):
                 # Every `validate_at` steps, use validation set to assess model
@@ -116,7 +115,7 @@ def main(model_name, restore, log_dir, **kwargs):
 
 if __name__ == '__main__':
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description='Linear neural network')
+    parser = argparse.ArgumentParser(description='Convolutional neural network')
 
     parser.add_argument('--restore', action='store_true',
                         help='If set, variables will be restored from checkpoint')
