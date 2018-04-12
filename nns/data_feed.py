@@ -6,24 +6,19 @@ from os import makedirs
 from os.path import exists
 
 # The data directory that the raw data is stored in
-data_dir = './MNIST_data'
+data_dir = './data_set/MNIST_data'
 # The npy file with 'normalized' data
 data_file = 'mnist.pkl'
 
 class DataFeed(object):
-    def __init__(self, shuffle=True):
+    def __init__(self):
         self.data = fetch_data()
         self.max = self.data['train_images'].shape[0]
         self.val_max = self.data['validation_images'].shape[0]
         self.test_max = self.data['test_images'].shape[0]
-        self.shuffle = shuffle
+        self.shuffle = True
         self.permutation = []
         self.offset = 0
-        
-        if not shuffle:
-            # Shuffle this one time and never again
-            self.permutation = np.random.permutation(self.max)
-
         self.reset_permutation()
 
     def reset_permutation(self):
@@ -70,7 +65,8 @@ def fetch_data():
 
     # Normalize data once if we haven't done it before and store it in a file
     if not exists(f'{data_dir}/{data_file}'):
-        mnist = input_data.read_data_sets('MNIST_data', one_hot=True)
+        print('Downloading MNIST data')
+        mnist = input_data.read_data_sets(data_dir, one_hot=True)
 
         def _normalize(data, mean=None, std=None):
             if mean is None:
