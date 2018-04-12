@@ -197,7 +197,95 @@ with tf.Graph().as_default() as graph:
 		... run graph stuff ...
 ```
 
-### Saving and restoring models
+### Layers ###
+With the `tensorflow.layers` library it is very easy to build a grap
+with standard neural network layers. In this subsection we will give a
+couple of examples used in the workshop.
+
+#### Dense layer ####
+
+Dense layers are also known as fully connected layers. In tensorflow
+we can make a linear layer as follows.
+
+```python
+with tf.Graph().as_default() as graph:
+	x = tf.placeholder(tf.float32, (None, 784), name='x')
+	dense = tf.layers.dense(
+		inputs=x,
+		units=500,
+		activation=tf.nn.relu)
+```
+
+This code will make a dense layer, that takes a matrix of samples of
+size vectors of size 784 as inputs and outputs vectors of
+size 500. The layer will multiply a 784 by 500 matrix to the input,
+add a bias vector, and apply the ReLU nonlinearity.
+
+#### Convolutional layer ####
+A convolutional layer is very commonly used in image recognition and
+is also very easily applied in tenforflow:
+
+```python
+with tf.Graph().as_default() as graph:
+	x = tf.placeholder(tf.float32, (None, 784), name='x')
+	input_layer = tf.reshape(x, (-1, 28, 28, 1)
+
+	conv1 = tf.layers.conv2d(
+		inputs=input_layer,
+		filters=32,
+		kernel_size=[5, 5],
+		padding="same",
+		activation=tf.nn.relu)
+```
+
+In the above code we first apply a reshape to the input in order to
+transform each sample from a vector of shape `(784,)` to a 3D-volume of
+shape `(28, 28, 1)` (think gray scale image, i.e., height, width,
+channels). Then we apply the 2D convolution with 32 5 by 5 filters,
+using 'same' padding, which mean padding the samples with zeros in
+order to obtain the same height and width of the output. Finally, a
+relu is applied. 
+
+The output of the operation will be of shape `(28, 28, 32)`.
+
+#### Max-pooling ####
+Max-pooling is a summarizing layer typically used right after
+convolutional layers. We can apply max-pooling as follows:
+
+```python
+pool = tf.layers.max_pooling2d(
+	inputs=conv1,
+	pool_size=[2, 2],
+	strides=2)
+```
+
+This will add a max-pooling layer with a 2 by 2 kernel side and a
+stride of 2. When the stride is two, the height and widht dimension
+will be halved in the output, e.g., if a max-pooling is applied to
+samples of shape `(28, 28, 3)`, the output shape will be `(14, 14, 3)`.
+
+#### Dropout ####
+
+Dropout is a commonly used regularization, which helps the neural
+network avoid overfitting:
+
+```python
+is_training = tf.placeholder(tf.bool)
+dropout = tf.layers.dropout(
+	inputs=input_layer,
+	rate=0.4,
+	training=is_training)
+```
+
+Here we first make a placeholder, that we can use, when running the
+session, to tell the layer if we are training or not. When we are
+training, we want dropout but when we validate or test the model, we
+do not want dropout. The `rate` tells how many connections between the
+preceding and the following layer to drop.
+
+The input and output shape will be the same.
+
+### Saving and restoring models ###
 When a model have been trained, we want to save it in order to beable
 to reuse it at a later point. For this, we can use a saver object:
 
