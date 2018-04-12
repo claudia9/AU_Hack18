@@ -1,4 +1,0 @@
-+ Store parameters for FC model
-+ Plot training and validation in same plot
-+ Conv net for Cifar-10
-+ Slides
