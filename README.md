@@ -51,7 +51,10 @@ then have to activate the new environment:
 Now you are good to go.
 
 ## Project structure
-![todo.jpg](todo.jpg)
+The project is structured as follows. In this readme we give an
+introduction to Tensorflow and Tensorboard. In the folder `nns` we
+have created two neural networks. Further down this page is
+instructions on how to train the networks.
 
 ## About Tensorflow ##
 In this section we briefly give a simple overview of the concepts of
@@ -332,7 +335,7 @@ This will download the CIFAR-10 data and can be restored to an
 accuracy of about 70% by running the following command:
 
 ```bash
-> python convolutional.py --restore -m checkpoints/convolution-pretrained.ckpt
+> python convolutional.py --restore
 ```
 
 ## Slides from AUHack ##
