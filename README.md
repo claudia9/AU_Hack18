@@ -18,7 +18,6 @@ This project is created for the **AUHack 2018** event. It indends to
  - Python 3.6
    - Tensorflow
    - Numpy
-   - Matplotlib
 
 ## Installation
 If you don't currently have Python version 3.6 installed, an easy way
@@ -36,8 +35,8 @@ This will install a python environment with the needed packages for
 this project. The packages are listed in the `requirements.txt`
 file. `[envname]` is the name of the enviromnemt, e.g., `auhack`.
 
-Before executing any python scripts you will then have to activate the
-new environment:
+Before executing any python scripts or launching tensorboard, you will
+then have to activate the new environment:
 
 **Linux, MacOS**:
 ```bash
@@ -291,11 +290,55 @@ The tensorboard visualizations could look something like the following:
 ![readme-graphics/fc-graph.png](readme-graphics/fc-graph.png)
 
 ## Models ##
-Here goes description of models
+The models created for this workshop can be found in the folder
+`nns`. There are two models. A simpler model used to recognize
+[MNIST](http://yann.lecun.com/exdb/mnist/) images and a deeper
+convolutional network trained on
+the [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html) data set.
 
+### MNIST model ###
+
+The MNIST model is found in `nns/dense.py`. It consists of two dense
+layers, a dropout layer and a softmax layer.
+
+To run the model, navigate to the folder and run the script:
+
+```bash
+> cd nns
+> python dense.py
+```
+
+This will download the MNIST data and start training the model.
+
+For more options see
+```bash
+> python dense.py --help
+```
+
+### CIFAR-10 ###
+
+The CIFAR-10 model is found in `nns/convolutional.py`. It consistes of
+two convolutional layers, two max-pooling layers and two dense
+layers.
+
+To run the model, navigate to the folder and run the script:
+
+```bash
+> cd nns
+> python convolutional.py
+```
+
+This will download the CIFAR-10 data and can be restored to an
+accuracy of about 70% by running the following command:
+
+```bash
+> python convolutional.py --restore -m checkpoints/convolution-pretrained.ckpt
+```
 
 ## Slides from AUHack ##
-
+The slides for this workshop can be
+found
+[here](https://docs.google.com/presentation/d/1BWe6HsePKh6KCYNn09VmmX6zHPskM7S2l8YuCbiF_3Q/edit?usp=sharing).
 
 ## License ##
 
