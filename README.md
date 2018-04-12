@@ -338,6 +338,27 @@ accuracy of about 70% by running the following command:
 > python convolutional.py --restore
 ```
 
+### Data feeds ###
+In order to make the process of building neural networks easier at
+this workshop, two data feeds have been made. They are located in the
+`nns/datafeeds` folder.
+
+The purpose of the datafeeds is to provide data for training and
+validation. They download the MNIST and CIFAR-10 data if it is missing
+and the supports three operations. 
+
+1. `feed.next(batch_size)` returns a batch of training images and
+   their corresponding labels. When all samples have been returned,
+   the training set is reshuffled at next call to next.
+2. `feed.validation()` and `feed.test()` returns the validation and
+   test set, respectively, in a similar manner as the `next`
+   function.
+
+### Templates ###
+A template with all the boilerplate code can be found in
+`nns/mnist-template.py` and `nns/cifar-template.py`.
+
+
 ## Slides from AUHack ##
 The slides for this workshop can be
 found
